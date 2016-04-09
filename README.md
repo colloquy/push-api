@@ -23,7 +23,7 @@ PUSH remove-device [device-token]
 ```
 
 ## Push API: Bouncer to Colloquy Push Server
-The server protocol is [JSON](http://json.org/) over an SSL connection to colloquy.mobi over port 7906. An example push looks somthing like this:
+The server protocol is [JSON](http://json.org/) over an SSL connection to `colloquy.mobi` over port `7906`. An example push body looks somthing like this:
 ```javascript
 {
   "device-token": "abcdef123456789…",
@@ -57,4 +57,4 @@ The Colloquy push server does not acccept connections over unsafe SSL protocols,
 - A [script](http://static.ssji.net/colloquy_push.pl.txt) for [irssi](https://irssi.org)
 
 ## Further Help
-Please stop by our IRC channel, [irc://chat.freenode.com/colloquy-mobile](irc://chat.freenode.com/colloquy-mobile), or file on our [trac](http://colloquy.info/?bug).
+Please stop by our IRC channel, [irc://chat.freenode.com/colloquy-mobile](irc://chat.freenode.com/colloquy-mobile), or file a ticket on our [trac](http://colloquy.info/?bug).
