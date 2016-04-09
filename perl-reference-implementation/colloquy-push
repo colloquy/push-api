@@ -1,0 +1,47 @@
+#!/usr/bin/perl -w
+
+use strict;
+use warnings;
+use ColloquyPush;
+use Getopt::Long;
+use File::Basename;
+
+my $showHelp = 0;
+my $deviceToken;
+my $message;
+my $action;
+my $sender;
+my $room;
+my $server;
+my $sound;
+my $badge;
+
+my $optionsResult = GetOptions(
+	'h|help'  => \$showHelp,
+	'd|device=s' => \$deviceToken,
+	'm|message=s' => \$message,
+	'a|action!' => \$action,
+	'n|nicknme=s' => \$sender,
+	'r|room=s' => \$room,
+	's|server=s' => \$server,
+	'x|sound=s' => \$sound,
+	'b|badge=s' => \$badge,
+);
+
+if (!$optionsResult || $showHelp || !$deviceToken) {
+	print STDERR <<__END__;
+Usage: @{[ basename($0) ]} [options]
+  -h|--help		 show the help message
+  -d|--device	 device token to push
+  -m|--message	 chat message to push
+  -a|--action	 chat message is an action
+  -n|--nickname	 sender nickname of the message
+  -r|--room		 room where the message was sent
+  -s|--server	 server where the message was sent
+  -x|--sound	 sound to play (sound file name or "default")
+  -b|--badge	 badge count to increment (positive or negative number, or "reset")
+__END__
+	exit 1;
+}
+
+pushChatMessage($deviceToken, $message, $action, $sender, $room, $server, $sound, $badge);
